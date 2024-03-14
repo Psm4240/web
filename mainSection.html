@@ -71,69 +71,6 @@
                         <td>4</td>
                         <td>5</td>
                     </tr>
-                    <tr class="post">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                    </tr>
-                    <tr class="post">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                    </tr>
-                    <tr class="post">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                    </tr>
-                    <tr class="post">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                    </tr>
-                    <tr class="post">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                    </tr>
-                    <tr class="post">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                    </tr>
-                    <tr class="post">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                    </tr>
-                    <tr class="post">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                    </tr>
-                    <tr class="post">
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                    </tr>
                 </table>
             </div>
         </div>
@@ -142,9 +79,6 @@
         <div class="footerBox">
             <div class="pageNum">
                 <a href="#" class="pageMove">1</a>
-                <a href="#" class="pageMove">2</a>
-                <a href="#" class="pageMove">3</a>
-                <a href="#" class="pageMove">4</a>
             </div>
             <div class="searchArea">
                 <form name="search" class="searchBoxes">
@@ -177,10 +111,28 @@
                 this.placeholder = "검색어를 입력해주세요.";
             }
         });
+        /*  JSON 사용하지 않을 경우
+
+            function
+
+            let post = new Post();
+
+
+        */
         let pageCount = document.getElementsByClassName("pageMove");
         let lastPage = pageCount[pageCount.length-1].innerText;
         let curPagePost = document.getElementsByClassName("post");
         let postNum = parseInt(lastPage - 1) * 10 + curPagePost.length;
+        
+        // 글 쓰기 객체생성 함수 //
+        // function Post(category, title, writer, date, view){
+        //     this.postCategory = category;
+        //     this.postTitle = title;
+        //     this.postWriter = writer;
+        //     this.postDate = date;
+        //     this.postView = view;
+        // }
+
         $(function(){
             $('#postCounts').html("<span>" + postNum + "</span>개의 게시글");
             $('tr td:nth-child(1)').text(

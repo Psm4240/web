@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        #categoriesSel, #headersSel {
+            display: inline-block;
+            width: 30%;
+            margin: 10px 10px 10px 0;
+        }
+        #articleName {
+            width: 90%; height: 20px;
+            margin: 0 10px 10px 0;
+            overflow: scroll;
+        }
+        #articleArea {
+            width: 90%; height: 700px;
+            margin-bottom: 10px;
+        }
+        #postSave {
+            float: right;
+            
+        }
+    </style>
+    <script src="../Web/JQuery/js/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <div id="writeArea">
+        <div class="cateTitle">
+            <form name="cateTitleF">
+                <select name="cate" id="categoriesSel">
+                    <option name="categories" value="HTML / CSS">HTML / CSS</option>
+                    <option name="categories" value="JavaScript">JavaScript</option>
+                    <option name="categories" value="Java">Java</option>
+                    <option name="categories" value="Server">Server</option>
+                    <option name="categories" value="Memo">Memo</option>
+                </select>
+                <select name="head" id="headersSel">
+                    <option name="headers" value="ABC">ABC</option>
+                    <option name="headers" value=""></option>
+                    <option name="headers" value=""></option>
+                    <option name="headers" value=""></option>
+                    <option name="headers" value=""></option>
+                </select><br>
+                <input type="text" id="articleName"></input>
+            </form>
+        </div>
+        <div class="tools">
+        </div>
+        <div>
+            <input type="text" id="articleArea"></input>
+        </div>
+    </div>
+    <div>
+        <form>
+            <input type="button" id="postSave" value="글 작성">
+        </form>
+    </div>
+    <script>
+        let PostNum = [];
+        function Post(category, title, writer, date, view, detail){
+            this.postCategory = category;
+            this.postTitle = title;
+            this.postWriter = writer;
+            this.postDate = date;
+            this.postView = view;
+            this.postDetail = detail;
+        }
+        $(function(){
+            $('#postSave').click(function(){
+                let now = new Date();
+                let year = now.getFullYear();
+                let month = ('0' + (now.getMonth() + 1)).slice(-2);
+                let day = ('0' + now.getDate()).slice(-2);
+                let today = year + "." + month + "." + day;
+                PostNum.push(new Post($('#categoriesSel option:selected').val(), $('#articleName').val(), "작성자A", today, 1, $('#articleArea').val()));
+                let postNum = JSON.stringify(PostNum[0]);
+                console.log(postNum);
+                console.log(today);
+            });
+        });
+    </script>
+</body>
+</html>
