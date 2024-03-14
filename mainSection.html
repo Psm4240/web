@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>content_page</title>
+    <style>
+        * {margin:0; padding:0; }
+        #content_top {border-bottom: 2px solid black; margin-bottom: 40px;}
+        #postCounts {margin: 15px 0 13px; font-size: 13px;}
+        header {margin: 0 0 20px;}
+        section {margin: 5px;}
+        .pageNum {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .searchBoxes {
+            position: absolute;
+            display: flex;
+            justify-items: center;
+        }
+        .searchBoxes select, input {
+            margin: 30px 5px;
+            padding: 2px;
+            flex-wrap: nowrap;
+        }
+        .pageMove {
+            display: flex;
+            margin: 5px;
+            color: black;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        table { margin: 5px; padding:2px; text-align: center; }
+        th, td {padding-right: 10px;}
+        th {font-size: 15px;}
+        td {font-size: 12px;}
+        td {width: 150px; padding: 5px;}
+        td:nth-child(3) {width: 150px;}
+        td:nth-child(4) {width: 150px;}
+        td:nth-child(5) {width: 50px;}
+        a:visited { text-decoration: none; }
+        span {font-weight: bold;}
+    </style>
+    <script src="../Web/JQuery/js/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <header>
+        <div id="content_top">
+            <h2>전체글 보기</h2>
+            <p id="postCounts"></p>
+        </div>
+    </header>
+    <nav></nav>
+    <section>
+        <div id="articles_area">
+            <div>
+                <table class="articleTable">
+                    <tr>
+                        <th class="category"></th>
+                        <th class="title">제목</th>
+                        <th class="writer">작성자</th>
+                        <th class="date">작성일</th>
+                        <th class="view">조회수</th>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr class="post">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footerBox">
+            <div class="pageNum">
+                <a href="#" class="pageMove">1</a>
+                <a href="#" class="pageMove">2</a>
+                <a href="#" class="pageMove">3</a>
+                <a href="#" class="pageMove">4</a>
+            </div>
+            <div class="searchArea">
+                <form name="search" class="searchBoxes">
+                    <select name="searTimes" id="searTimes">
+                        <option name="searTime" value="allTime" selected>전체기간</option>
+                        <option name="searTime" value="day">1일</option>
+                        <option name="searTime" value="week">1주</option>
+                        <option name="searTime" value="month">1개월</option>
+                        <option name="searTime" value="year">1년</option>
+                    </select>
+                    <select name="searDetail" id="searDetail">
+                        <option name="searDet" value="postAndComment" selected>게시글 + 댓글</option>
+                        <option name="searDet" value="postTitle">제목만</option>
+                        <option name="searDet" value="writer">글작성자</option>
+                        <option name="searDet" value="comment">댓글내용</option>
+                        <option name="searDet" value="commenter">댓글작성자</option>
+                    </select>
+                    <input class="searchText" id="searchText" type="textarea" placeholder="검색어를 입력해주세요.">
+                </form>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let box = document.getElementById("searchText");
+        box.addEventListener('focus', function(){
+            this.placeholder = "";
+        });
+        box.addEventListener('blur', function(){
+            if (this.placeholder == ""){
+                this.placeholder = "검색어를 입력해주세요.";
+            }
+        });
+        let pageCount = document.getElementsByClassName("pageMove");
+        let lastPage = pageCount[pageCount.length-1].innerText;
+        let curPagePost = document.getElementsByClassName("post");
+        let postNum = parseInt(lastPage - 1) * 10 + curPagePost.length;
+        $(function(){
+            $('#postCounts').html("<span>" + postNum + "</span>개의 게시글");
+            $('tr td:nth-child(1)').text(
+                $('tr td:nth-child(2)').val()
+            );
+            $.getJSON('postObj.json', function(data){
+                $.each(data, function(){
+                    $('.post:first').before(
+                        "<tr>" +
+                            "<td>" + this.postCategory + "</td>" +
+                            "<td>" + this.postTitle + "</td>" +
+                            "<td>" + this.postWriter + "</td>" +
+                            "<td>" + this.postDate + "</td>" +
+                            "<td>" + this.postView + "</td>" +
+                        "<tr>"
+                    )
+                });
+            });
+        });
+    </script>
+</body>
+</html>
